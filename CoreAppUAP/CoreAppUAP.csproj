@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ApplicationEntryPoint>CoreAppUAP.App</ApplicationEntryPoint>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+    <EnableMsixTooling>True</EnableMsixTooling>
+    <OutputType>WinExe</OutputType>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <PublishAot>True</PublishAot>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <UseUwp>True</UseUwp>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <PackageCertificateThumbprint>0CDF4A03E9BE9DD789894BB3C7AD3DEDECD9AB25</PackageCertificateThumbprint>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AppPackages\**" />
+    <None Remove="BundleArtifacts\**" />
+  </ItemGroup>
+
+  <Import Project="RemoveDependencies.targets" />
+</Project>

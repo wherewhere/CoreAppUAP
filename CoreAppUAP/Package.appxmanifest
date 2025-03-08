@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+
+  <Identity
+    Name="wherewhere.CoreAppUAP"
+    Publisher="CN=where"
+    Version="0.0.1.0" />
+
+  <Properties>
+    <DisplayName>CoreAppUAP</DisplayName>
+    <PublisherDisplayName>qq251</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Prerequisites>
+    <OSMinVersion>6.2.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+  </Prerequisites>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="CoreAppUAP.App">
+      <VisualElements
+        DisplayName="CoreAppUAP"
+        Logo="Assets\Square150x150Logo.png"
+        SmallLogo="Assets\Square44x44Logo.png"
+        Description="CoreAppUAP"
+        ForegroundText="light"
+        BackgroundColor="transparent">
+        <DefaultTile WideLogo="Assets\Wide310x150Logo.png"/>
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
