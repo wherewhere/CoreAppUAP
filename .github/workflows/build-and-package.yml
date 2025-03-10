@@ -79,7 +79,7 @@ jobs:
         /p:PackageCertificateKeyFile=$env:Signing_Certificate `
         /p:PackageCertificatePassword="$env:Password"
       env:
-        Appx_Bundle: Always
+        Appx_Bundle: Never
         Appx_Bundle_Platforms: x64|ARM64
         Appx_Package_Build_Mode: SideloadOnly
         Appx_Package_Dir: AppxPackages\
