@@ -1,7 +1,8 @@
 {
   "profiles": {
     "CoreAppUAP": {
-      "commandName": "MsixPackage"
+      "commandName": "MsixPackage",
+      "nativeDebugging": false
     }
   }
 }

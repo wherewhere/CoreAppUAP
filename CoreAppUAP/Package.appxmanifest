@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Package
-  xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
 
   <Identity
     Name="wherewhere.CoreAppUAP"
@@ -16,7 +15,7 @@
 
   <Prerequisites>
     <OSMinVersion>6.2.0</OSMinVersion>
-    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
 
   <Resources>
@@ -26,17 +25,21 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="CoreAppUAP.App">
+      EntryPoint="$targetentrypoint$">
       <VisualElements
         DisplayName="CoreAppUAP"
-        Logo="Assets\Square150x150Logo.png"
-        SmallLogo="Assets\Square44x44Logo.png"
+        Logo="Assets\MediumTile.png"
+        SmallLogo="Assets\AppIcon.png"
         Description="CoreAppUAP"
         ForegroundText="light"
         BackgroundColor="transparent">
-        <DefaultTile WideLogo="Assets\Wide310x150Logo.png"/>
-        <SplashScreen Image="Assets\SplashScreen.png" />
+        <DefaultTile WideLogo="Assets\WideTile.png"/>
+        <SplashScreen Image="Assets\SplashScreen.png"/>
+        <LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png"/>
       </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+      </Extensions>
     </Application>
   </Applications>
 

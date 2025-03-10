@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ApplicationEntryPoint>CoreAppUAP.App</ApplicationEntryPoint>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
     <DefaultLanguage>en-US</DefaultLanguage>
     <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
     <EnableMsixTooling>True</EnableMsixTooling>
@@ -13,8 +14,12 @@
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <UseUwp>True</UseUwp>
     <VersionPrefix>0.0.1</VersionPrefix>
-    <PackageCertificateThumbprint>0CDF4A03E9BE9DD789894BB3C7AD3DEDECD9AB25</PackageCertificateThumbprint>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Common" Version="8.4.0" />
+    <PackageReference Include="MetroLog.Net6" Version="2.1.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="AppPackages\**" />
