@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <ApplicationEntryPoint>CoreAppUAP.App</ApplicationEntryPoint>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <DefaultLanguage>en-US</DefaultLanguage>

@@ -126,7 +126,7 @@ namespace CoreAppUAP
                 // 将框架放在当前窗口中
                 window.Content = rootFrame;
 
-                //ThemeHelper.Initialize();
+                ThemeHelper.Initialize();
             }
 
             if (e is LaunchActivatedEventArgs args)

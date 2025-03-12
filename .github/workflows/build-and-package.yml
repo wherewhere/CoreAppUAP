@@ -65,7 +65,7 @@ jobs:
       run: nuget restore $env:Solution_Name
 
     # Create the app package by building and packaging the Windows Application Packaging project
-    - name: Create the app package
+    - name: Create the app package (x64)
       run: msbuild $env:Solution_Name `
         /p:AppxBundlePlatforms="$env:Appx_Bundle_Platforms" `
         /p:Configuration=$env:Configuration `
@@ -80,11 +80,34 @@ jobs:
         /p:PackageCertificatePassword="$env:Password"
       env:
         Appx_Bundle: Never
-        Appx_Bundle_Platforms: x64|ARM64
+        Appx_Bundle_Platforms: x64
         Appx_Package_Build_Mode: SideloadOnly
         Appx_Package_Dir: AppxPackages\
         Configuration: Release
         Platform: 'x64'
+        Thumbprint: 0CDF4A03E9BE9DD789894BB3C7AD3DEDECD9AB25
+        Password: ${{ secrets.Password }}
+
+    - name: Create the app package (ARM64)
+      run: msbuild $env:Solution_Name `
+        /p:AppxBundlePlatforms="$env:Appx_Bundle_Platforms" `
+        /p:Configuration=$env:Configuration `
+        /p:Platform=$env:Platform `
+        /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode `
+        /p:AppxBundle=$env:Appx_Bundle `
+        /p:AppxPackageDir="$env:Appx_Package_Dir" `
+        /p:GenerateAppxPackageOnBuild=true `
+        /p:AppxPackageSigningEnabled=true `
+        /p:PackageCertificateThumbprint="$env:Thumbprint" `
+        /p:PackageCertificateKeyFile=$env:Signing_Certificate `
+        /p:PackageCertificatePassword="$env:Password"
+      env:
+        Appx_Bundle: Never
+        Appx_Bundle_Platforms: ARM64
+        Appx_Package_Build_Mode: SideloadOnly
+        Appx_Package_Dir: AppxPackages\
+        Configuration: Release
+        Platform: 'ARM64'
         Thumbprint: 0CDF4A03E9BE9DD789894BB3C7AD3DEDECD9AB25
         Password: ${{ secrets.Password }}
 

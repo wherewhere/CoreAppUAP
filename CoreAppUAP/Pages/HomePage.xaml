@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:CoreAppUAP.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +34,10 @@
                 Style="{StaticResource HeaderTextBlockStyle}"
                 Text="Home" />
         </Grid>
-        <ScrollViewer Grid.Row="1" Padding="40,0,40,40">
+        <ScrollViewer
+            Grid.Row="1"
+            Padding="40,0,40,40"
+            ZoomMode="Disabled">
             <controls:StaggeredPanel
                 ColumnSpacing="40"
                 DesiredColumnWidth="296"

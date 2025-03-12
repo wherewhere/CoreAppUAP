@@ -5,9 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    FontSize="{StaticResource ControlContentThemeFontSize}"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
-    <Frame x:Name="MainFrame" x:FieldModifier="public" />
+    <Frame
+        x:Name="MainFrame"
+        x:FieldModifier="public"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
     <Page.BottomAppBar>
         <AppBar IsSticky="True">
             <Grid>
@@ -18,20 +22,26 @@
                 <StackPanel Orientation="Horizontal">
                     <AppBarButton
                         Click="AppBarButton_Click"
-                        Icon="Home"
                         Label="Home"
-                        Tag="Home" />
-                    <AppBarButton Icon="Page" Label="Empty" />
-                    <AppBarButton Icon="Page" Label="Empty" />
-                    <AppBarButton Icon="Page" Label="Empty" />
+                        Tag="Home">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10F;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton Label="Empty" />
+                    <AppBarButton Label="Empty" />
+                    <AppBarButton Label="Empty" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <AppBarButton Icon="Page" Label="Empty" />
+                    <AppBarButton Label="Empty" />
                     <AppBarButton
                         Click="AppBarButton_Click"
-                        Icon="Setting"
                         Label="Setting"
-                        Tag="Setting" />
+                        Tag="Setting">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE115;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
                 </StackPanel>
             </Grid>
         </AppBar>
