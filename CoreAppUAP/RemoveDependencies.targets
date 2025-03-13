@@ -23,14 +23,17 @@
                 {
                     foreach (var node in dependencies.ToArray())
                     {
-                        node.Remove();
+                        if (!node.HasElements)
+                        {
+                            node.Remove();
+                        }
                     }
                 }
                 xdoc.Save(AppxManifestPath);
             }
-            catch (Exception ex)
+            catch
             {
-                Log.LogError("Failed to load Appx Manifest." + ex);
+                Log.LogError("Failed to load Appx Manifest.");
                 _Success = false;
             }
         ]]>

@@ -12,9 +12,14 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <UseUwp>True</UseUwp>
     <VersionPrefix>0.0.1</VersionPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AddMicrosoftVCLibsSDKReference>False</AddMicrosoftVCLibsSDKReference>
+    <EnableAppxWindowsUniversalTargetDeviceFamilyItem>False</EnableAppxWindowsUniversalTargetDeviceFamilyItem>
   </PropertyGroup>
 
   <ItemGroup>

@@ -35,6 +35,12 @@
         BackgroundColor="transparent">
         <DefaultTile WideLogo="Assets\WideTile.png"/>
         <SplashScreen Image="Assets\SplashScreen.png"/>
+        <InitialRotationPreference>
+          <Rotation Preference="landscape"/>
+          <Rotation Preference="portrait"/>
+          <Rotation Preference="landscapeFlipped"/>
+          <Rotation Preference="portraitFlipped"/>
+        </InitialRotationPreference>
         <LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png"/>
       </VisualElements>
       <Extensions>
