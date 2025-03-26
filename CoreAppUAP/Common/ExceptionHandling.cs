@@ -205,15 +205,9 @@ namespace CoreAppUAP.Common
         }
 
         /// <inheritdoc />
-        public override SynchronizationContext CreateCopy()
-        {
-            return new CoreDispatcherSynchronizationContext(dispatcher);
-        }
+        public override SynchronizationContext CreateCopy() => new CoreDispatcherSynchronizationContext(dispatcher);
 
         /// <inheritdoc />
-        public override void Send(SendOrPostCallback d, object state)
-        {
-            throw new NotSupportedException("'SynchronizationContext.Send' is not supported.");
-        }
+        public override void Send(SendOrPostCallback d, object state) => throw new NotSupportedException("'SynchronizationContext.Send' is not supported.");
     }
 }

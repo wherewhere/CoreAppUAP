@@ -96,7 +96,7 @@ namespace CoreAppUAP
 
         #endregion
 
-        private void EnsureWindow(IActivatedEventArgs e)
+        private static void EnsureWindow(IActivatedEventArgs e)
         {
             if (Window.Current is not Window window) { return; }
 
