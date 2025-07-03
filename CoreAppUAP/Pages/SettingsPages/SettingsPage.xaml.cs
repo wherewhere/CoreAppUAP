@@ -82,7 +82,7 @@ namespace CoreAppUAP.Pages.SettingsPages
                     _ = Launcher.LaunchUriAsync(new Uri("https://github.com/wherewhere/CoreAppUAP/issues"));
                     break;
                 case "LogFolder":
-                    _ = Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists));
+                    _ = Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("Logs", CreationCollisionOption.OpenIfExists));
                     break;
                 case "NewWindow":
                     _ = await WindowHelper.CreateWindowAsync(window =>

@@ -20,11 +20,13 @@
   <PropertyGroup>
     <AddMicrosoftVCLibsSDKReference>False</AddMicrosoftVCLibsSDKReference>
     <EnableAppxWindowsUniversalTargetDeviceFamilyItem>False</EnableAppxWindowsUniversalTargetDeviceFamilyItem>
+    <MicrosoftWindowsSDKBuildToolsMSIXPackageVersion>1.7.20250508.1</MicrosoftWindowsSDKBuildToolsMSIXPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Common" Version="8.4.0" />
-    <PackageReference Include="MetroLog.Net6" Version="2.1.0" />
+    <PackageReference Include="Karambolo.Extensions.Logging.File" Version="3.6.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.6" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using CoreAppUAP.Helpers;
+using Microsoft.Extensions.Logging;
 using System;
 using Windows.ApplicationModel.Search;
 using Windows.Storage;
@@ -23,7 +24,7 @@ namespace CoreAppUAP.Common
             }
             catch (Exception ex)
             {
-                SettingsHelper.LogManager.GetLogger(nameof(SettingsPaneRegister)).Error(ex.ExceptionToMessage(), ex);
+                SettingsHelper.LoggerFactory.CreateLogger(typeof(SettingsPaneRegister)).LogError(ex, "Failed to register settings pane. {message} (0x{hResult:X})", ex.GetMessage(), ex.HResult);
             }
         }
 
@@ -36,7 +37,7 @@ namespace CoreAppUAP.Common
             }
             catch (Exception ex)
             {
-                SettingsHelper.LogManager.GetLogger(nameof(SettingsPaneRegister)).Error(ex.ExceptionToMessage(), ex);
+                SettingsHelper.LoggerFactory.CreateLogger(typeof(SettingsPaneRegister)).LogError(ex, "Failed to unregister settings pane. {message} (0x{hResult:X})", ex.GetMessage(), ex.HResult);
             }
         }
 
@@ -51,7 +52,7 @@ namespace CoreAppUAP.Common
                 new SettingsCommand(
                     "LogFolder",
                     "LogFolder",
-                    async handler => _ = Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists))));
+                    async handler => _ = Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("Logs", CreationCollisionOption.OpenIfExists))));
             args.Request.ApplicationCommands.Add(
                 new SettingsCommand(
                     "Repository",

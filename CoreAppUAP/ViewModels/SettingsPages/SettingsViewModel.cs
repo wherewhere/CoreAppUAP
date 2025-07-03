@@ -1,5 +1,6 @@
 ﻿using CoreAppUAP.Common;
 using CoreAppUAP.Helpers;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,7 +98,7 @@ namespace CoreAppUAP.ViewModels.SettingsPages
         public async Task<bool> OpenLogFileAsync()
         {
             await ThreadSwitcher.ResumeBackgroundAsync();
-            StorageFolder folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists);
+            StorageFolder folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("Logs", CreationCollisionOption.OpenIfExists);
             IReadOnlyList<StorageFile> files = await folder.GetFilesAsync();
             if (files is [StorageFile file, ..])
             {
@@ -113,12 +114,12 @@ namespace CoreAppUAP.ViewModels.SettingsPages
             try
             {
                 await ThreadSwitcher.ResumeBackgroundAsync();
-                StorageFolder folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists);
+                StorageFolder folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("Logs", CreationCollisionOption.OpenIfExists);
                 await folder.DeleteAsync();
             }
             catch (Exception ex)
             {
-                SettingsHelper.LogManager.GetLogger(nameof(SettingsViewModel)).Error(ex.ExceptionToMessage(), ex);
+                SettingsHelper.LoggerFactory.CreateLogger<SettingsViewModel>().LogError(ex, "Failed to clean the logs. {message} (0x{hResult:X})", ex.GetMessage(), ex.HResult);
             }
             finally
             {
