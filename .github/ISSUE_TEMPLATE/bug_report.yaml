@@ -42,6 +42,8 @@ body:
       description: Which Windows versions did you see the issue on?
       options:
         - "Insider Build (xxxxx)"
+        - "Windows 11 version 24H2 (26100, 2024 Update)"
+        - "Windows 11 version 23H2 (22631, November 2023 Update)"
         - "Windows 11 version 22H2 (22621, 2022 Update)"
         - "Windows 11 version 21H2 (22000)"
         - "Windows 10 version 22H2 (19045, 2022 Update)"
@@ -52,6 +54,16 @@ body:
         - "Windows 10 version 1909 (18363, November 2019 Update)"
         - "Windows 10 version 1903 (18362, May 2019 Update)"
         - "Windows 10 version 1809 (17763, October 2018 Update)"
+        - "Windows 10 version 1803 (17134, April 2018 Update)"
+        - "Windows 10 version 1709 (16299, Fall Creators Update)"
+        - "Windows 10 version 1709 (15254, Fall Creators Update)"
+        - "Windows 10 version 1703 (15063, Creators Update)"
+        - "Windows 10 version 1607 (14393, Anniversary Update)"
+        - "Windows 10 version 1511 (10586, November Update)"
+        - "Windows 10 version 1507 (10240)"
+        - "Windows 8.1 Update 1 (9600)"
+        - "Windows 8.1 (9483)"
+        - "Windows 8 (9200)"
   - type: dropdown
     validations:
       required: true

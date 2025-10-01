@@ -20,7 +20,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: CoreAppUAP.sln
+      Solution_Name: CoreAppUAP.slnx
       Project_Directory: CoreAppUAP
       Signing_Certificate: CoreAppUAP_TemporaryKey.pfx
 
@@ -60,9 +60,6 @@ jobs:
       env:
         Configuration: Release
         Platform: 'x64'
-
-    - name: Nuget restore
-      run: nuget restore $env:Solution_Name
 
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Create the app package (x64)

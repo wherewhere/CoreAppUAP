@@ -211,7 +211,7 @@ namespace CoreAppUAP.Helpers
                     ? Application.Current.RequestedTheme == ApplicationTheme.Dark
                     : actualTheme == ElementTheme.Dark
                 : actualTheme == ElementTheme.Default
-                    ? UISettings?.GetColorValue(UIColorType.Foreground).IsColorLight() == true
+                    ? UISettings.GetColorValue(UIColorType.Foreground).IsColorLight()
                     : actualTheme == ElementTheme.Dark;
         }
 
