@@ -3,11 +3,11 @@ using Karambolo.Extensions.Logging.File;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
-using Windows.Storage;
 using Windows.UI.Xaml;
 
 namespace CoreAppUAP.Helpers
@@ -37,15 +37,15 @@ namespace CoreAppUAP.Helpers
 
     public static partial class SettingsHelper
     {
-        public static ILoggerFactory LoggerFactory { get; } = CreateLoggerFactory();
         public static ApplicationDataStorageHelper LocalObject { get; } = ApplicationDataStorageHelper.GetCurrent(new SystemTextJsonObjectSerializer());
+        public static ILoggerFactory LoggerFactory { get; } = CreateLoggerFactory();
 
         static SettingsHelper() => SetDefaultSettings();
 
         public static ILoggerFactory CreateLoggerFactory() =>
             Microsoft.Extensions.Logging.LoggerFactory.Create(x => _ = x.AddFile(x =>
             {
-                x.RootPath = ApplicationData.Current.LocalFolder.Path;
+                x.RootPath = LocalObject.Folder.Path;
                 x.IncludeScopes = true;
                 x.BasePath = "Logs";
                 x.Files = [
@@ -63,7 +63,7 @@ namespace CoreAppUAP.Helpers
         {
             bool => JsonSerializer.Serialize(value, SourceGenerationContext.Default.Boolean),
             ElementTheme => JsonSerializer.Serialize(value, SourceGenerationContext.Default.ElementTheme),
-            _ => value?.ToString(),
+            _ => JsonSerializer.Serialize(value, typeof(T), SourceGenerationContext.Default)
         };
 
         public T Deserialize<T>([StringSyntax(StringSyntaxAttribute.Json)] string value)
@@ -72,8 +72,13 @@ namespace CoreAppUAP.Helpers
             Type type = typeof(T);
             return type == typeof(bool) ? Deserialize(value, SourceGenerationContext.Default.Boolean)
                 : type == typeof(ElementTheme) ? Deserialize(value, SourceGenerationContext.Default.ElementTheme)
-                : default;
-            static T Deserialize<TValue>([StringSyntax(StringSyntaxAttribute.Json)] string json, JsonTypeInfo<TValue> jsonTypeInfo) => JsonSerializer.Deserialize(json, jsonTypeInfo) is T value ? value : default;
+                : JsonSerializer.Deserialize(value, type, SourceGenerationContext.Default) is T result ? result : default;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            static T Deserialize<TValue>([StringSyntax(StringSyntaxAttribute.Json)] string json, JsonTypeInfo<TValue> jsonTypeInfo)
+            {
+                TValue value = JsonSerializer.Deserialize(json, jsonTypeInfo);
+                return Unsafe.As<TValue, T>(ref value);
+            }
         }
     }
 
