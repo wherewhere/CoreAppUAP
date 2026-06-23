@@ -168,7 +168,7 @@ namespace CoreAppUAP.Pages.SettingsPages
             DataPackage dataPackage = new();
             dataPackage.SetText(frameworkElement.Tag?.ToString());
             Clipboard.SetContent(dataPackage);
-            if (e != null) { e.Handled = true; }
+            e?.Handled = true;
         }
 
         public void Refresh(bool reset = false) => Provider.Refresh(reset);

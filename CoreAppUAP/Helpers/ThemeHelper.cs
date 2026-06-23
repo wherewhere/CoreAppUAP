@@ -188,10 +188,7 @@ namespace CoreAppUAP.Helpers
 
         public static async void Initialize(FrameworkElement rootElement)
         {
-            if (rootElement != null)
-            {
-                rootElement.RequestedTheme = await GetActualThemeAsync();
-            }
+            rootElement?.RequestedTheme = await GetActualThemeAsync();
         }
 
         private static async void UISettings_ColorValuesChanged(UISettings sender, object args)

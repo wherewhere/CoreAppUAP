@@ -66,7 +66,7 @@ namespace CoreAppUAP.Helpers
             if (e.Key == VirtualKey.Menu)
             {
                 FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
-                if (e != null) { e.Handled = true; }
+                e?.Handled = true;
             }
         }
 
@@ -82,7 +82,7 @@ namespace CoreAppUAP.Helpers
             {
                 FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
             }
-            if (e != null) { e.Handled = true; }
+            e?.Handled = true;
         }
 
         private static void OnRightTapped(object sender, RightTappedRoutedEventArgs e)
@@ -97,7 +97,7 @@ namespace CoreAppUAP.Helpers
             {
                 FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
             }
-            if (e != null) { e.Handled = true; }
+            e?.Handled = true;
         }
 
         #endregion

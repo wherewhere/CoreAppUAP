@@ -159,7 +159,7 @@ namespace CoreAppUAP
             // 确保当前窗口处于活动状态
             window.Activate();
         }
-        
+
         /// <summary>
         /// 导航到特定页失败时调用
         /// </summary>

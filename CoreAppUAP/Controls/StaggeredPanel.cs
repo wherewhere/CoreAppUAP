@@ -116,7 +116,7 @@ namespace CoreAppUAP.Controls
             int numColumns = Math.Max(1, (int)Math.Floor(availableWidth / _columnWidth));
 
             // adjust for column spacing on all columns expect the first
-            double totalWidth = _columnWidth + (numColumns - 1) * (_columnWidth + ColumnSpacing);
+            double totalWidth = _columnWidth + ((numColumns - 1) * (_columnWidth + ColumnSpacing));
             if (totalWidth > availableWidth)
             {
                 numColumns--;
@@ -137,16 +137,16 @@ namespace CoreAppUAP.Controls
                 return new Size(0, 0);
             }
 
-            var columnHeights = new double[numColumns];
-            var itemsPerColumn = new double[numColumns];
+            double[] columnHeights = new double[numColumns];
+            double[] itemsPerColumn = new double[numColumns];
 
             for (int i = 0; i < Children.Count; i++)
             {
-                var columnIndex = GetColumnIndex(columnHeights);
+                int columnIndex = GetColumnIndex(columnHeights);
 
-                var child = Children[i];
+                UIElement child = Children[i];
                 child.Measure(new Size((float)_columnWidth, (float)availableHeight));
-                var elementSize = child.DesiredSize;
+                Size elementSize = child.DesiredSize;
                 columnHeights[columnIndex] += elementSize.Height + (itemsPerColumn[columnIndex] > 0 ? RowSpacing : 0);
                 itemsPerColumn[columnIndex]++;
             }
@@ -164,13 +164,13 @@ namespace CoreAppUAP.Controls
             int numColumns = Math.Max(1, (int)Math.Floor(finalSize.Width / _columnWidth));
 
             // adjust for horizontal spacing on all columns expect the first
-            double totalWidth = _columnWidth + (numColumns - 1) * (_columnWidth + ColumnSpacing);
+            double totalWidth = _columnWidth + ((numColumns - 1) * (_columnWidth + ColumnSpacing));
             if (totalWidth > finalSize.Width)
             {
                 numColumns--;
 
                 // Need to recalculate the totalWidth for a correct horizontal offset
-                totalWidth = _columnWidth + (numColumns - 1) * (_columnWidth + ColumnSpacing);
+                totalWidth = _columnWidth + ((numColumns - 1) * (_columnWidth + ColumnSpacing));
             }
 
             if (HorizontalAlignment == HorizontalAlignment.Right)
@@ -182,20 +182,20 @@ namespace CoreAppUAP.Controls
                 horizontalOffset += (finalSize.Width - totalWidth) / 2;
             }
 
-            var columnHeights = new double[numColumns];
-            var itemsPerColumn = new double[numColumns];
+            double[] columnHeights = new double[numColumns];
+            double[] itemsPerColumn = new double[numColumns];
 
             for (int i = 0; i < Children.Count; i++)
             {
-                var columnIndex = GetColumnIndex(columnHeights);
+                int columnIndex = GetColumnIndex(columnHeights);
 
-                var child = Children[i];
-                var elementSize = child.DesiredSize;
+                UIElement child = Children[i];
+                Size elementSize = child.DesiredSize;
 
                 double elementHeight = elementSize.Height;
 
-                double itemHorizontalOffset = horizontalOffset + _columnWidth * columnIndex + ColumnSpacing * columnIndex;
-                double itemVerticalOffset = columnHeights[columnIndex] + verticalOffset + RowSpacing * itemsPerColumn[columnIndex];
+                double itemHorizontalOffset = horizontalOffset + (_columnWidth * columnIndex) + (ColumnSpacing * columnIndex);
+                double itemVerticalOffset = columnHeights[columnIndex] + verticalOffset + (RowSpacing * itemsPerColumn[columnIndex]);
 
                 Rect bounds = new((float)itemHorizontalOffset, (float)itemVerticalOffset, (float)_columnWidth, (float)elementHeight);
                 child.Arrange(bounds);

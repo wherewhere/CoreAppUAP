@@ -35,14 +35,7 @@ namespace CoreAppUAP.Helpers.Converters
         /// <returns>The converted value</returns>
         internal static object Convert(object value, Type targetType)
         {
-            if (targetType.IsInstanceOfType(value))
-            {
-                return value;
-            }
-            else
-            {
-                return XamlBindingHelper.ConvertValue(targetType, value);
-            }
+            return targetType.IsInstanceOfType(value) ? value : XamlBindingHelper.ConvertValue(targetType, value);
         }
     }
 }
