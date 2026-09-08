@@ -9,7 +9,7 @@ namespace CoreAppUAP.Helpers.Converters
     /// <summary>
     /// This class converts a string value into a Visibility value (if the value is null or empty returns a collapsed value).
     /// </summary>
-    public partial class StringVisibilityConverter : EmptyStringToObjectConverter
+    public sealed partial class StringVisibilityConverter : EmptyStringToObjectConverter
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="StringVisibilityConverter"/> class.
